@@ -40,18 +40,20 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button onAction="#play" fx:id="paper" layoutX="280.0" layoutY="301.0" mnemonicParsing="false" prefWidth="80.0" text="Paper" AnchorPane.bottomAnchor="40.0" />
-                        <Button onAction="#play" fx:id="scissors" layoutX="388.0" layoutY="301.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Scissors" AnchorPane.bottomAnchor="40.0" />
-                        <Button onAction="#play" fx:id="rock" layoutX="169.0" layoutY="301.0" mnemonicParsing="false" prefWidth="80.0" text="Rock" AnchorPane.bottomAnchor="40.0" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="109.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="328.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" />
-                        <Text fx:id="status" layoutX="265.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER">
+                        <Button fx:id="paper" layoutX="280.0" layoutY="301.0" mnemonicParsing="false" onAction="#play" prefWidth="80.0" text="Paper" AnchorPane.bottomAnchor="40.0" />
+                        <Button fx:id="scissors" layoutX="391.0" layoutY="301.0" mnemonicParsing="false" onAction="#play" prefHeight="26.0" prefWidth="80.0" text="Scissors" AnchorPane.bottomAnchor="40.0" />
+                        <Button fx:id="rock" layoutX="169.0" layoutY="301.0" mnemonicParsing="false" onAction="#play" prefWidth="80.0" text="Rock" AnchorPane.bottomAnchor="40.0" />
+                        <ImageView fx:id="playerImageView" fitHeight="150.0" fitWidth="200.0" layoutX="109.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="computerImageView" fitHeight="150.0" fitWidth="200.0" layoutX="328.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" />
+                        <Text fx:id="status" layoutX="41.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="558.26953125">
                            <font>
                               <Font name="System Bold" size="44.0" />
                            </font>
                         </Text>
                         <Text layoutX="197.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You" />
                         <Text layoutX="396.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Computer" />
+                        <Text fx:id="playerString" layoutX="195.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Text fx:id="computerString" layoutX="417.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                      </children></AnchorPane>
             </content>
           </Tab>

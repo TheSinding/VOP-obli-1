@@ -5,20 +5,21 @@
  */
 package jora316.vop.obl.pkg1;
 
-import java.net.InterfaceAddress;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import ancient_encryption.AtbashCipher;
 import ancient_encryption.CeasarCipher;
-import com.sun.org.apache.xpath.internal.SourceTree;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.*;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import rock_scissors_paper.RockPaperScissors;
 
 /**
@@ -30,6 +31,12 @@ public class FXMLDocumentController implements Initializable {
     AtbashCipher at = new AtbashCipher();
     CeasarCipher ce;
     RockPaperScissors game = new RockPaperScissors();
+
+    Image rockImage     = new Image("Rock.png");
+    Image paperImage    = new Image("Paper.png");
+    Image scissorsImage = new Image("Scissors.png");
+
+    HashMap<Integer,Image> hands = new HashMap<>();
 
     @FXML
     private Label label;
@@ -60,6 +67,16 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Text status;
 
+    @FXML
+    private ImageView computerImageView;
+    @FXML
+    private ImageView playerImageView;
+    @FXML
+    private Text playerString;
+
+    @FXML
+    private Text computerString;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Sets the spinners initial value
@@ -68,6 +85,10 @@ public class FXMLDocumentController implements Initializable {
         ce = new CeasarCipher(cKey.getValue());
         atbashEn.setSelected(true); // Preselects the atbash encryption
         status.setText("WELCOME TO RPS");
+        hands.put(1,rockImage);
+        hands.put(2,paperImage);
+        hands.put(3,scissorsImage);
+
     }
 
 
@@ -100,7 +121,19 @@ public class FXMLDocumentController implements Initializable {
     public void play(ActionEvent actionEvent) {
         try {
             Button caller = (Button) actionEvent.getSource();
-            status.setText(game.play(caller.getId()));
+            String winnerStatus = game.play(caller.getId());
+            int[] playedHands = game.getHands();
+
+            // This is abit messy, but it works.
+            // the player string is set to the pressed button string
+            playerString.setText(caller.getText());
+            computerString.setText(game.getComputerString());
+
+            playerImageView.setImage(this.hands.get(playedHands[0]));
+            computerImageView.setImage(this.hands.get(playedHands[1]));
+
+            status.setText(winnerStatus);
+
         } catch (ClassCastException err){
             System.out.println("Something bad happend");
         }

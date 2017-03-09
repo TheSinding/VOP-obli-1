@@ -15,7 +15,11 @@ import com.sun.org.apache.xpath.internal.SourceTree;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import rock_scissors_paper.RockPaperScissors;
 
 /**
  *
@@ -25,6 +29,7 @@ public class FXMLDocumentController implements Initializable {
 
     AtbashCipher at = new AtbashCipher();
     CeasarCipher ce;
+    RockPaperScissors game = new RockPaperScissors();
 
     @FXML
     private Label label;
@@ -43,7 +48,18 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Spinner<Integer> cKey = new Spinner<>();
 
-    
+    @FXML
+    private Button paper;
+
+    @FXML
+    private Button scissors;
+
+    @FXML
+    private Button rock;
+
+    @FXML
+    private Text status;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Sets the spinners initial value
@@ -51,6 +67,7 @@ public class FXMLDocumentController implements Initializable {
         cKey.setValueFactory(v);
         ce = new CeasarCipher(cKey.getValue());
         atbashEn.setSelected(true); // Preselects the atbash encryption
+        status.setText("WELCOME TO RPS");
     }
 
 
@@ -79,5 +96,13 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    
+
+    public void play(ActionEvent actionEvent) {
+        try {
+            Button caller = (Button) actionEvent.getSource();
+            status.setText(game.play(caller.getId()));
+        } catch (ClassCastException err){
+            System.out.println("Something bad happend");
+        }
+    }
 }

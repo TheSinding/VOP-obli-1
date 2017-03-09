@@ -1,49 +1,37 @@
 package rock_scissors_paper;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.Random;
 
 /**
  * Created by thesinding on 3/5/17.
  */
 public class RockPaperScissors {
-    public final static String[] HANDS = new String[]{"Sten","Saks","Papir"};
-    public HashMap <String, String > winners = new HashMap<>();
 
-    private String player = "Player";
-    private String computer = "Computer";
-    public String getPlayer() {
-        return player;
-    }
-
-    public RockPaperScissors (){
-        winners.put(HANDS[0],HANDS[1]);
-        winners.put(HANDS[1],HANDS[2]);
-        winners.put(HANDS[2],HANDS[0]);
-
-    }
-
-    public String getComputer() {
-        return computer;
-    }
-
-    public void play(String player) {
-        double random = Math.random() * 10;
-        if(random < 3.33f){
-            computer = HANDS[0];
-        } else if (random < 3.33d && random > 6.66d){
-            computer = HANDS[1];
-        } else {
-            computer = HANDS[2];
+    public String play(String play) {
+        Random rng = new Random();
+        int randomInt = rng.nextInt(3) + 1;
+        String returnString = null;
+        switch (play){
+            case "rock":
+                returnString = check(1, randomInt);
+            break;
+            case "paper":
+                returnString = check(2, randomInt);
+            break;
+            case "scissors":
+                returnString = check(3, randomInt);
+            break;
         }
-        this.player = player;
+        return returnString;
+    }
+    private String check(int a, int b){
+        if(a == b){
+            return "It's a tie";
+        } else if (a == (b - 1) || b == (a - 2)){
+            return "Computer win";
+        } else {
+            return "You win";
+        }
     }
 
-
-    public String getWinner(){
-        return "";
-    }
-    public static void main(String[] args) {
-
-    }
 }

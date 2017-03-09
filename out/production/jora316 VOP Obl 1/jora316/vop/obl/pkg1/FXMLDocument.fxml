@@ -8,7 +8,9 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" maxHeight="400.0" maxWidth="640.0" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jora316.vop.obl.pkg1.FXMLDocumentController">
@@ -36,7 +38,21 @@
           </Tab>
           <Tab text="Rock">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button onAction="#play" fx:id="paper" layoutX="280.0" layoutY="301.0" mnemonicParsing="false" prefWidth="80.0" text="Paper" AnchorPane.bottomAnchor="40.0" />
+                        <Button onAction="#play" fx:id="scissors" layoutX="388.0" layoutY="301.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Scissors" AnchorPane.bottomAnchor="40.0" />
+                        <Button onAction="#play" fx:id="rock" layoutX="169.0" layoutY="301.0" mnemonicParsing="false" prefWidth="80.0" text="Rock" AnchorPane.bottomAnchor="40.0" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="109.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="328.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" />
+                        <Text fx:id="status" layoutX="265.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="44.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="197.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You" />
+                        <Text layoutX="396.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Computer" />
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>

@@ -36,6 +36,7 @@ public class FXMLDocumentController implements Initializable {
     Image paperImage    = new Image("Paper.png");
     Image scissorsImage = new Image("Scissors.png");
 
+    // store the hands with a integer as a key
     HashMap<Integer,Image> hands = new HashMap<>();
 
     @FXML
@@ -128,6 +129,7 @@ public class FXMLDocumentController implements Initializable {
             // the player string is set to the pressed button string
             playerString.setText(caller.getText());
             computerString.setText(game.getComputerString());
+
 
             playerImageView.setImage(this.hands.get(playedHands[0]));
             computerImageView.setImage(this.hands.get(playedHands[1]));

@@ -12,6 +12,13 @@ public class RockPaperScissors {
     private Random rng = new Random();
 
 
+    /**
+     * Play the game
+     * this needs rock, paper or scissors as a string
+     * this is case sensitive.
+     * @param play - players play
+     * @return a winner string
+     */
     public String play(String play) {
         this.computer = this.rng.nextInt(3) + 1;
         switch (play){
@@ -27,6 +34,13 @@ public class RockPaperScissors {
         }
         return check(this.player, this.computer);
     }
+
+    /**
+     * Checks who wins
+     * @param a - Player int
+     * @param b - Computers int
+     * @return a string with winner
+     */
     private String check(int a, int b){
         if(a == b){
             return "It's a tie";
@@ -38,10 +52,23 @@ public class RockPaperScissors {
         }
     }
 
+    /**
+     * This returns the hands as integers
+     * 1 - Rock
+     * 2 - Paper
+     * 3 - Scissors
+     * index 0 - player
+     * index 1 - computer
+     * @return ints between 1 - 3
+     */
     public int[] getHands(){
         return new int[] {this.player, this.computer};
     }
 
+    /**
+     * Retruns the computers hand as a string
+     * @return String of hand
+     */
     public String getComputerString(){
         // Gets the computer's hand string
         return computerString[this.computer - 1];
